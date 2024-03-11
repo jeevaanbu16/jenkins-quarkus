@@ -38,10 +38,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            // Clean up any artifacts or resources if needed
-        }
-    }
 }
