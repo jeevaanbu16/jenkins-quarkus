@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    environment {
+        SOURCE_REPO = 'https://github.com/example/repo.git'
+        SOURCE_BRANCH = 'main'
+        OUTPUT_IMAGE = 'quay.io/example/image:latest'
+    }
+
+    stages {
+        stage('Clone Repository') {
+            steps {
+                script {
+                    git branch: SOURCE_BRANCH, url: SOURCE_REPO
+                }
+            }
+        }
+
+        stage('Build and Push Image') {
+            steps {
+                script {
+                    // Your build and push commands here
+                    // For example, using Maven and Docker
+                    sh 'mvn clean install'
+                    sh 'docker build -t $OUTPUT_IMAGE .'
+                    sh 'docker push $OUTPUT_IMAGE'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            // Cleanup steps, if any
+        }
+    }
+}
