@@ -17,7 +17,7 @@ pipeline {
         stage('Build and Package') {
             steps {
                 script {
-                    sh 'mvn -Dquarkus.analytics.enabled=false compile quarkus:dev'
+                    sh 'mvn compile quarkus:dev'
                     sh 'mvn package'
                 }
             }
