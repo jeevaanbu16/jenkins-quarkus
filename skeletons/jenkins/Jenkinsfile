@@ -2,28 +2,43 @@ pipeline {
     agent any
 
     environment {
-        SOURCE_REPO = 'https://github.com/example/repo.git'
-        SOURCE_BRANCH = 'main'
-        OUTPUT_IMAGE = 'quay.io/example/image:latest'
+        MAVEN_HOME = tool 'Maven'
+        JAVA_HOME = tool 'JDK'
     }
 
     stages {
-        stage('Clone Repository') {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build and Package') {
             steps {
                 script {
-                    git branch: SOURCE_BRANCH, url: SOURCE_REPO
+                    sh "${MAVEN_HOME}/bin/mvn compile quarkus:dev"
+                    sh "${MAVEN_HOME}/bin/mvn package"
                 }
             }
         }
 
-        stage('Build and Push Image') {
+        stage('Create Uber-Jar') {
             steps {
                 script {
-                    // Your build and push commands here
-                    // For example, using Maven and Docker
-                    sh 'mvn clean install'
-                    sh 'docker build -t $OUTPUT_IMAGE .'
-                    sh 'docker push $OUTPUT_IMAGE'
+                    sh "${MAVEN_HOME}/bin/mvn package -Dquarkus.package.type=uber-jar"
+                }
+            }
+        }
+
+        stage('Build Native Executable') {
+            steps {
+                script {
+                    // Use GraalVM for native executable (make sure GraalVM is installed)
+                    // Uncomment the next line if you have GraalVM installed
+                    // sh "${MAVEN_HOME}/bin/mvn package -Dnative"
+
+                    // Alternatively, use native executable build in a container
+                    sh "${MAVEN_HOME}/bin/mvn package -Dnative -Dquarkus.native.container-build=true"
                 }
             }
         }
@@ -31,7 +46,7 @@ pipeline {
 
     post {
         always {
-            // Cleanup steps, if any
+            // Clean up any artifacts or resources if needed
         }
     }
 }
