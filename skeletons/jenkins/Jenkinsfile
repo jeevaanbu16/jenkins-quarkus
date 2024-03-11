@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+        tools {
+        // Specify the Maven installation configured in Jenkins
+        maven 'maven'
+    }
+
+
     stages {
         stage('Checkout') {
             steps {
@@ -11,8 +17,8 @@ pipeline {
         stage('Build and Package') {
             steps {
                 script {
-                    sh "${MAVEN_HOME}/bin/mvn compile quarkus:dev"
-                    sh "${MAVEN_HOME}/bin/mvn package"
+                    sh 'mvn -Dquarkus.analytics.enabled=false compile quarkus:dev'
+                    sh 'mvn package'
                 }
             }
         }
@@ -20,7 +26,7 @@ pipeline {
         stage('Create Uber-Jar') {
             steps {
                 script {
-                    sh "${MAVEN_HOME}/bin/mvn package -Dquarkus.package.type=uber-jar"
+                    sh 'mvn package -Dquarkus.package.type=uber-jar'
                 }
             }
         }
@@ -33,7 +39,7 @@ pipeline {
                     // sh "${MAVEN_HOME}/bin/mvn package -Dnative"
 
                     // Alternatively, use native executable build in a container
-                    sh "${MAVEN_HOME}/bin/mvn package -Dnative -Dquarkus.native.container-build=true"
+                    sh 'mvn package -Dnative -Dquarkus.native.container-build=true'
                 }
             }
         }
