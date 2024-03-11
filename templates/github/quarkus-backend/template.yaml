@@ -9,7 +9,7 @@ metadata:
   - java
   - maven
 spec:
-  owner: janus-authors
+  owner: Jeeva-Anbumani
   system: janus-idp
   type: service
 
