@@ -24,6 +24,9 @@ metadata:
     {%- endif %}
     {%- if values.ci == "../../../skeletons/tekton/" %}
     tektonci/build-namespace: ${{ values.namespace }}
+    {%- elif values.ci == "../../../skeletons/jenkins/" %}
+    # Add Jenkins-specific annotations
+    jenkins.io/job-namespace: ${{ values.namespace }}
     {%- endif %}
     backstage.io/kubernetes-id: ${{ name }}
     backstage.io/techdocs-ref: dir:.
