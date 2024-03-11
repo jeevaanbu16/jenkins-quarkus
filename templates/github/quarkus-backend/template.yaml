@@ -1,7 +1,7 @@
 apiVersion: scaffolder.backstage.io/v1beta3
 kind: Template
 metadata:
-  name: quarkus-backend-template
+  name: quarkus-backend-test-template
   title: Create a Quarkus Backend application with a Jenkins-CI pipeline
   description: Create a starter Quarkus Backend application with a CI pipeline
   tags:
