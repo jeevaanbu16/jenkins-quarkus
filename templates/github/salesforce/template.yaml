@@ -67,17 +67,17 @@ spec:
       artifactId:
         title: Artifact ID
         type: string
-        default: quarkusapp
-        description: Maven Artifact ID
+        default: saleforceapp
+        description: Artifact ID
       version:
         title: Version
         type: string
         default: 1.0.0-SNAPSHOT
-        description: Maven Artifact Version
+        description: Artifact Version
       javaPackageName:
         title: Package Namespace
         type: string
-        default: io.janus.quarkusapp
+        default: io.janus.salesforceapp
         description: Name for the Java Package (e.g. io.janus.quarkusapp) should match Group ID and Artifact ID
   - title: Provide information about the CI method
     required:
