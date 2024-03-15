@@ -216,9 +216,9 @@ spec:
     name: Publishing to the Source Code Repository
     action: publish:bitbucketServer
     input:
-      allowedHosts: ['apps.mclaneco.com']
+      allowedHosts: ['apps.mclaneco.com/bitbucket']
       description: ${{ parameters.description }}
-      repoUrl: apps.mclaneco.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
+      repoUrl: apps.mclaneco.com/bitbucket?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
       defaultBranch: main
 
   - id: register
