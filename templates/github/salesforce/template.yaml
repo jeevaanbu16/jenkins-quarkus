@@ -6,6 +6,8 @@ metadata:
   description: Create a starter salesforce application with a CI pipeline
   tags:
   - salesforce
+  - mvn
+  - java
 spec:
   owner: Jeeva-Anbumani
   system: janus-idp
