@@ -62,8 +62,8 @@ spec:
       groupId:
         title: Group ID
         type: string
-        default: io.janus
-        description: Maven Group ID eg (io.janus)
+        default: io.salesforce
+        description: salesforce Group ID eg (io.janus)
       artifactId:
         title: Artifact ID
         type: string
@@ -212,11 +212,11 @@ spec:
 
   - id: publish
     name: Publishing to the Source Code Repository
-    action: publish:bitbucketServer
+    action: publish:github
     input:
-      allowedHosts: ['apps.mclaneco.com']
+      allowedHosts: ['github.com']
       description: ${{ parameters.description }}
-      repoUrl: apps.mclaneco.com/bitbucket?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
+      repoUrl: github.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
       defaultBranch: main
 
   - id: register
