@@ -212,7 +212,7 @@ spec:
 
   - id: publish
     name: Publishing to the Source Code Repository
-    action: publish:bitbucketServer:pull-request
+    action: publish:bitbucketServer
     input:
       allowedHosts: ['appstest.mclaneco.com']
       description: ${{ parameters.description }}
