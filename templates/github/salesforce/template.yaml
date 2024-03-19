@@ -214,7 +214,7 @@ spec:
     name: Publishing to the Source Code Repository
     action: publish:bitbucketServer
     input:
-      repoUrl: appstest.mclaneco.com/bitbucket/projects/${{ parameters.projectName }}/repos/${{ parameters.repoName }}
+      repoUrl: appstest.mclaneco.com/bitbucket/projects/${{ parameters.orgName }}/repos/${{ parameters.repoName }}
       description: ${{ parameters.description }}
       repoVisibility: private  # Or 'public' if you want the repository to be public
       defaultBranch: main  # Or any other default branch name you prefer
