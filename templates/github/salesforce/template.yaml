@@ -216,7 +216,7 @@ spec:
     input:
       allowedHosts: ['appstest.mclaneco.com']
       description: ${{ parameters.description }}
-      repoUrl: appstest.mclaneco.com/bitbucket/projects/JAN?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
+      repoUrl: appstest.mclaneco.com/bitbucket/projects/JAN/repos/${{ parameters.repoName }}
       defaultBranch: master
 
   - id: register
