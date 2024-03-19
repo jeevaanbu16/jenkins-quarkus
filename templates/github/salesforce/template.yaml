@@ -212,16 +212,12 @@ spec:
 
   - id: publish
     name: Publishing to the Source Code Repository
-    action: publish:bitbucketServer
+    action: publish:bitbucketserver
     input:
-      repoUrl: appstest.mclaneco.com/bitbucket/projects/${{ parameters.orgName }}/repos/${{ parameters.repoName }}
+      allowedHosts: ['appstest.mclaneco.com']
       description: ${{ parameters.description }}
-      repoVisibility: private  # Or 'public' if you want the repository to be public
-      defaultBranch: main  # Or any other default branch name you prefer
-      token: BBDC-MDg5Mzk1NzkyMTY5OvKXKyaHH82QXmzJiBo9LRnAw4CJ  # Replace with your Bitbucket Server authentication token
-      gitCommitMessage: "Initial commit"  # Optional: Customize the commit message
-      gitAuthorName: "jeeva"  # Optional: Customize the author name
-      gitAuthorEmail: "your@email.com"  # Optional: Customize the author email
+      repoUrl: appstest.mclaneco.com/bitbucket/projects/${{ parameters.orgName }}/repos/${{ parameters.repoName }}
+      defaultBranch: main
 
   - id: register
     name: Registering the Catalog Info Component
