@@ -213,12 +213,11 @@ spec:
 
   - id: publish
     name: Publishing to the Source Code Repository
-    action: publish:github
+    action: publish:bitbucketServer
     input:
-      allowedHosts: ['github.com']
+      allowedHosts: ['appstest.mclaneco.com']
       description: ${{ parameters.description }}
-      repoUrl: github.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
-      defaultBranch: main
+      repoUrl: appstest.mclaneco.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
 
   - id: register
     name: Registering the Catalog Info Component
