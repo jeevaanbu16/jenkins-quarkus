@@ -52,6 +52,21 @@ spec:
         type: number
         default: 8080
         description: Override the port exposed for the application
+  - title: Repository Information
+    properties:
+      repoUrl:
+        title: Repository Location
+        type: string
+        ui:field: RepoUrlPicker
+        ui:options:
+          requestUserCredentials:
+            secretsKey: BBDC-MDc3MjYwNzM0ODMwOojyK41irhNju/li3+IieQd7Ug6P
+            additionalScopes:
+            bitbucket:
+              - repository
+          allowedHosts:
+          - appstest.mclaneco.com
+        
   - title: Provide information about the Java metadata
     required:
     - groupId
