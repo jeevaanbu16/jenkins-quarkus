@@ -60,12 +60,12 @@ spec:
         ui:field: RepoUrlPicker
         ui:options:
           requestUserCredentials:
-            secretsKey: BBDC-MDc3MjYwNzM0ODMwOojyK41irhNju/li3+IieQd7Ug6P
+            secretsKey: abcd
             additionalScopes:
-            bitbucket:
+            github:
               - repository
           allowedHosts:
-          - appstest.mclaneco.com
+          - github.com
         
   - title: Provide information about the Java metadata
     required:
