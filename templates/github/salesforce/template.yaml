@@ -65,7 +65,7 @@ spec:
             bitbucket:
               - repository
           allowedHosts:
-          - appstest.mclaneco.com
+          - appstest.mclaneco.com/bitbucket
         
   - title: Provide information about the Java metadata
     required:
