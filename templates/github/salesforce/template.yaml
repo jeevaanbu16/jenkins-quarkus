@@ -227,11 +227,11 @@ spec:
 
   - id: publish
     name: Publishing to the Source Code Repository
-    action: publish:bitbucketServer
+    action: publish:github
     input:
-      allowedHosts: ['appstest.mclaneco.com']
+      allowedHosts: ['github.com']
       description: ${{ parameters.description }}
-      repoUrl: appstest.mclaneco.com/bitbucket/projects/${{ parameters.orgName }}/repos/${{ parameters.repoName }}
+      repoUrl: github.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
       defaultBranch: main
 
   - id: register
