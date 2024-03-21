@@ -218,6 +218,8 @@ spec:
       allowedHosts: ['appstest.mclaneco.com']
       description: ${{ parameters.description }}
       repoUrl: appstest.mclaneco.com/bitbucket?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
+      username: jxanbum
+      password: Openshift12!
 
   - id: register
     name: Registering the Catalog Info Component
