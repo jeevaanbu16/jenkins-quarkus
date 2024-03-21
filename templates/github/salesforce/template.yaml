@@ -217,9 +217,8 @@ spec:
     input:
       allowedHosts: ['appstest.mclaneco.com']
       description: ${{ parameters.description }}
-      repoUrl: appstest.mclaneco.com/bitbucket?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
-      username: jxanbum
-      password: Openshift12!
+      repoUrl: appstest.mclaneco.com/bitbucket/projects/JAN/repos/salesforce-2/
+      token: BBDC-NzU0NzQ1MDMwMjUxOos9tBIvYoeYkdAoZpEQKZntKPLT
 
   - id: register
     name: Registering the Catalog Info Component
