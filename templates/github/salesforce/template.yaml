@@ -161,7 +161,6 @@ spec:
         artifactId: ${{ parameters.artifactId }}
         version: ${{ parameters.version }}
         javaPackageName: ${{ parameters.javaPackageName}}
-        sourceControl: github.com
 
   - id: ciTemplate
     name: Generating the CI Component
@@ -186,7 +185,6 @@ spec:
         groupId: ${{ parameters.groupId }}
         artifactId: ${{ parameters.artifactId }}
         javaPackageName: ${{ parameters.javaPackageName}}
-        sourceControl: github.com
 
   - id: catalogTemplate
     name: Generating the Catalog Info Component
@@ -209,7 +207,6 @@ spec:
         groupId: ${{ parameters.groupId }}
         artifactId: ${{ parameters.artifactId }}
         javaPackageName: ${{ parameters.javaPackageName}}
-        sourceControl: github.com
 
   - id: publish
     name: Publishing to the Source Code Repository
@@ -217,8 +214,7 @@ spec:
     input:
       allowedHosts: ['appstest.mclaneco.com']
       description: ${{ parameters.description }}
-      repoUrl: appstest.mclaneco.com/bitbucket/projects/JAN/repos/salesforce-2/
-      token: BBDC-NzU0NzQ1MDMwMjUxOos9tBIvYoeYkdAoZpEQKZntKPLT
+      repoUrl: appstest.mclaneco.com/bitbucket?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
 
   - id: register
     name: Registering the Catalog Info Component
