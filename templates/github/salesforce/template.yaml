@@ -214,7 +214,7 @@ spec:
     input:
       allowedHosts: ['bitbucket.org']
       description: ${{ parameters.description }}
-      repoUrl: bitbucket.org?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
+      repoUrl: bitbucket.org/bonbloc?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
 
   - id: register
     name: Registering the Catalog Info Component
