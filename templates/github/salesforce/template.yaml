@@ -210,11 +210,11 @@ spec:
 
   - id: publish
     name: Publishing to the Source Code Repository
-    action: publish:bitbucketServer
+    action: publish:bitbucketCloud
     input:
-      allowedHosts: ['appstest.mclaneco.com']
+      allowedHosts: ['bitbucket.org']
       description: ${{ parameters.description }}
-      repoUrl: appstest.mclaneco.com/bitbucket/projects/JAN/repos?create
+      repoUrl: bitbucket.org/bonbloc/salesforce-temp
 
   - id: register
     name: Registering the Catalog Info Component
