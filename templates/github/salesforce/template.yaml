@@ -214,7 +214,7 @@ spec:
     input:
       allowedHosts: ['appstest.mclaneco.com']
       description: ${{ parameters.description }}
-      repoUrl: appstest.mclaneco.com/bitbucket?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
+      repoUrl: apps.mclaneco.com/bitbucket/users/jxanbum/projects/JAN/repos/salesforce
 
   - id: register
     name: Registering the Catalog Info Component
