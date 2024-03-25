@@ -145,7 +145,7 @@ spec:
     input:
       url: ./skeleton
       values:
-        orgName: ${{ parameters.orgName }}
+        projectName: ${{ parameters.projectName }}
         repoName: ${{ parameters.repoName }}
         owner: ${{ parameters.owner }}
         system: ${{ parameters.system }}
@@ -170,7 +170,7 @@ spec:
       copyWithoutTemplating:
       - .github/workflows/
       values:
-        orgName: ${{ parameters.orgName }}
+        projectName: ${{ parameters.projectName }}
         repoName: ${{ parameters.repoName }}
         owner: ${{ parameters.owner }}
         system: ${{ parameters.system }}
@@ -192,7 +192,7 @@ spec:
     input:
       url: ../../../skeletons/catalog-info/
       values:
-        orgName: ${{ parameters.orgName }}
+        projectName: ${{ parameters.projectName }}
         repoName: ${{ parameters.repoName }}
         owner: ${{ parameters.owner }}
         system: ${{ parameters.system }}
@@ -210,11 +210,11 @@ spec:
 
   - id: publish
     name: Publishing to the Source Code Repository
-    action: publish:bitbucketCloud
+    action: publish:bitbucketServer
     input:
-      allowedHosts: ['bitbucket.org']
+      allowedHosts: ['appstest.mclaneco.com']
       description: ${{ parameters.description }}
-      repoUrl: bitbucket.org/bonbloc?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
+      repoUrl: appstest.mclaneco.com?owner=${{ parameters.projectName }}&repo=${{ parameters.repoName }}
 
   - id: register
     name: Registering the Catalog Info Component
