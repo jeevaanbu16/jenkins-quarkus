@@ -20,8 +20,8 @@ spec:
     - system
     - port
     properties:
-      orgName:
-        title: Organization Name
+      projectName:
+        title: Project Name
         type: string
       repoName:
         title: Repository Name
