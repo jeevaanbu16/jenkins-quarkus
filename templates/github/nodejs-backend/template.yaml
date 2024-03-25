@@ -18,7 +18,7 @@ spec:
   parameters:
     - title: Provide information about the new component
       required:
-        - orgName
+        - projectName
         - repoName
         - owner
         - system
@@ -110,7 +110,7 @@ spec:
       input:
         url: ./skeleton
         values:
-          orgName: ${{ parameters.orgName }}
+          projectName: ${{ parameters.projectName }}
           repoName: ${{ parameters.repoName }}
           owner: ${{ parameters.owner }}
           system: ${{ parameters.system }}
@@ -122,7 +122,7 @@ spec:
           imageRepository: ${{ parameters.imageRepository }}
           port: ${{ parameters.port }}
           ci: ${{ parameters.ci }}
-          sourceControl: github.com
+          sourceControl: appstest.mclaneco.com
 
     - id: ciTemplate
       name: Generating the CI Component
@@ -132,7 +132,7 @@ spec:
         copyWithoutTemplating:
           - .github/workflows/
         values:
-          orgName: ${{ parameters.orgName }}
+          projectName: ${{ parameters.projectName }}
           repoName: ${{ parameters.repoName }}
           owner: ${{ parameters.owner }}
           system: ${{ parameters.system }}
@@ -144,7 +144,7 @@ spec:
           imageRepository: ${{ parameters.imageRepository }}
           port: ${{ parameters.port }}
           ci: ${{ parameters.ci }}
-          sourceControl: github.com
+          sourceControl: appstest.mclaneco.com
 
     - id: catalogTemplate
       name: Generating the Catalog Info Component
@@ -152,7 +152,7 @@ spec:
       input:
         url: ../../../skeletons/catalog-info/
         values:
-          orgName: ${{ parameters.orgName }}
+          projectName: ${{ parameters.projectName }}
           repoName: ${{ parameters.repoName }}
           owner: ${{ parameters.owner }}
           system: ${{ parameters.system }}
@@ -164,15 +164,15 @@ spec:
           imageRepository: ${{ parameters.imageRepository }}
           port: ${{ parameters.port }}
           ci: ${{ parameters.ci }}
-          sourceControl: github.com
+          sourceControl: appstest.mclaneco.com
 
     - id: publish
       name: Publishing to the Source Code Repository
-      action: publish:github
+      action: publish:bitbucketServer
       input:
-        allowedHosts: ['github.com']
+        allowedHosts: ['appstest.mclaneco.com']
         description: ${{ parameters.description }}
-        repoUrl: github.com?owner=${{ parameters.orgName }}&repo=${{ parameters.repoName }}
+        repoUrl: appstest.mclaneco.com?owner=${{ parameters.projectName }}&repo=${{ parameters.repoName }}
         defaultBranch: main
 
     - id: register
