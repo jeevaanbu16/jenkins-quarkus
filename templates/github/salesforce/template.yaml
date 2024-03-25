@@ -214,9 +214,7 @@ spec:
     input:
       allowedHosts: ['appstest.mclaneco.com']
       description: ${{ parameters.description }}
-      repoUrl: appstest.mclaneco.com/rest/api/1.0/projects/JAN/repos/salesforce
-      username: jxanbum
-      password: Openshift12!
+      repoUrl: appstest.mclaneco.com/bitbucket/projects/JAN/repos/salesforce
 
   - id: register
     name: Registering the Catalog Info Component
