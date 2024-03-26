@@ -1,47 +1,43 @@
 pipeline {
-    agent any
-
-        tools {
-        // Specify the Maven installation configured in Jenkins
-        maven 'maven'
-    }
-
-
-    stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Build and Package') {
-            steps {
-                script {
-                    sh 'mvn compile quarkus:dev'
-                    sh 'mvn package'
-                }
-            }
-        }
-
-        stage('Create Uber-Jar') {
-            steps {
-                script {
-                    sh 'mvn package -Dquarkus.package.type=uber-jar'
-                }
-            }
-        }
-
-        stage('Build Native Executable') {
-            steps {
-                script {
-                    // Use GraalVM for native executable (make sure GraalVM is installed)
-                    // Uncomment the next line if you have GraalVM installed
-                    // sh "${MAVEN_HOME}/bin/mvn package -Dnative"
-
-                    // Alternatively, use native executable build in a container
-                    sh 'mvn package -Dnative -Dquarkus.native.container-build=true'
-                }
-            }
-        }
-    }
+   agent any
+   environment {
+       OPENSHIFT_PROJECT = 'your_project_name'
+       OPENSHIFT_APP_NAME = 'salesforce-domain-builder'
+       OPENSHIFT_ROUTE_HOST = 'your_route_host'
+       OPENSHIFT_IMAGE_NAME = 'salesforce-domain-builder-image'
+       OPENSHIFT_IMAGE_TAG = 'latest'
+   }
+   stages {
+       stage('checkout') {
+           steps {
+               checkout scm
+           }
+       }
+       stage('Build image') {
+           steps {
+               script {
+                   openshift.withCluster() {
+                       openshift.withProject(env.OPENSHIFT_PROJECT) {
+                           def dockerImage = docker.build("${env.OPENSHIFT_IMAGE_NAME}:${env.OPENSHIFT_IMAGE_TAG}", '.')
+                           dockerImage.push()
+                       }
+                   }
+               }
+           }
+       }
+       stage('Deploy to OpenShift') {
+           steps {
+               script {
+                   openshift.withCluster() {
+                       openshift.withProject(env.OPENSHIFT_PROJECT) {
+                           openshift.newApp("${env.OPENSHIFT_IMAGE_NAME}:${env.OPENSHIFT_IMAGE_TAG}",
+                                           "--name=${env.OPENSHIFT_APP_NAME}",
+                                           "--hostname=${env.OPENSHIFT_ROUTE_HOST}")
+                       }
+                   }
+               }
+           }
+       }
+   }
 }
+has context menu
